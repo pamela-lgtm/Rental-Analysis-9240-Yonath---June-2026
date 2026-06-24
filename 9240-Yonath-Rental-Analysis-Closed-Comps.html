@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rental Market Analysis — 9240 Yonath Street</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#008C82;--deep-teal:#00665F;--gold:#D4AF50;--charcoal:#1A1A1A;
+    --paper:#FBFAF6;--paper-2:#F3F0E7;--line:#E2DDCF;--muted:#6b675d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{font-family:'Jost',sans-serif;color:var(--charcoal);background:var(--paper);line-height:1.6;font-weight:300;font-size:16px;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 28px;}
+
+  .masthead{background:var(--deep-teal);color:var(--paper);padding:54px 0 46px;border-bottom:3px solid var(--gold);}
+  .brand-row{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .brand{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;letter-spacing:.06em;color:var(--paper);}
+  .brand .v{color:var(--gold);}
+  .tagline{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:400;}
+  .doc-title{font-family:'Cormorant Garamond',serif;font-size:46px;line-height:1.08;font-weight:600;margin-top:34px;color:var(--paper);}
+  .doc-sub{font-size:15px;letter-spacing:.04em;color:rgba(251,250,246,.82);margin-top:10px;}
+  .doc-meta{margin-top:22px;display:flex;gap:30px;flex-wrap:wrap;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(251,250,246,.7);}
+  .doc-meta b{display:block;font-weight:500;color:var(--gold);margin-bottom:3px;font-size:11px;}
+
+  section{padding:46px 0;border-bottom:1px solid var(--line);}
+  .eyebrow{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:14px;}
+  h2{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;line-height:1.15;color:var(--deep-teal);margin-bottom:18px;}
+  h3{font-family:'Jost',sans-serif;font-size:14px;font-weight:600;letter-spacing:.04em;color:var(--charcoal);margin:22px 0 8px;}
+  p{margin-bottom:14px;color:#2c2a25;}
+  p.lead{font-size:18px;color:var(--charcoal);}
+  strong{font-weight:600;}
+
+  .factbar{background:var(--paper-2);border:1px solid var(--line);border-radius:4px;padding:26px 28px;margin-top:8px;}
+  .fact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px 18px;}
+  .fact .k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+  .fact .val{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--deep-teal);line-height:1;}
+  .fact .val small{font-size:13px;font-family:'Jost';font-weight:400;color:var(--charcoal);}
+  .model-line{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;color:#2c2a25;}
+  .model-line b{color:var(--deep-teal);}
+  .badge{display:inline-block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:3px 10px;border-radius:2px;font-weight:500;margin-left:6px;}
+
+  .reco{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-2) 100%);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:5px;padding:34px 34px 30px;text-align:center;margin-top:6px;}
+  .reco .label{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);font-weight:500;}
+  .reco .figure{font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:700;color:var(--deep-teal);line-height:1;margin:14px 0 6px;}
+  .reco .figure span{font-size:26px;color:var(--gold);vertical-align:super;}
+  .reco .figure small{font-size:22px;font-weight:400;color:var(--charcoal);}
+  .reco .band{font-size:14px;color:var(--muted);letter-spacing:.03em;}
+  .reco .band b{color:var(--charcoal);font-weight:600;}
+  .reco .basis{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;letter-spacing:.04em;color:var(--muted);}
+  .reco .basis b{color:var(--teal);font-weight:600;}
+
+  table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13.5px;}
+  thead th{text-align:left;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;padding:0 10px 10px;border-bottom:2px solid var(--deep-teal);}
+  thead th.num{text-align:right;}
+  .group-row td{padding:16px 10px 6px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:600;border:none;}
+  tbody td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tbody td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  tbody tr.subject td{background:var(--paper-2);font-weight:500;}
+  .addr{font-weight:500;color:var(--charcoal);}
+  .note{display:block;font-size:11px;color:var(--muted);margin-top:2px;font-weight:400;}
+  .lsd{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--deep-teal);}
+  .ask{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--muted);}
+  .dom-fast{color:var(--teal);font-weight:600;}
+  .dom-slow{color:#a8682b;font-weight:600;}
+  .legend{font-size:12px;color:var(--muted);margin-top:16px;}
+
+  .insight{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:6px;}
+  .stat{background:var(--paper-2);border:1px solid var(--line);border-radius:4px;padding:20px 18px;text-align:center;}
+  .stat .big{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;color:var(--deep-teal);line-height:1;}
+  .stat .cap{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px;}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:6px;}
+  .col h3{margin-top:0;}
+  ul.clean{list-style:none;margin:6px 0 0;}
+  ul.clean li{position:relative;padding-left:20px;margin-bottom:10px;font-size:14.5px;color:#2c2a25;}
+  ul.clean li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;background:var(--gold);border-radius:50%;}
+
+  .philosophy{background:var(--deep-teal);color:var(--paper);border-radius:5px;padding:34px 36px;margin-top:6px;}
+  .philosophy .eyebrow{color:var(--gold);}
+  .philosophy h2{color:var(--paper);font-size:26px;margin-bottom:14px;}
+  .philosophy p{color:rgba(251,250,246,.9);}
+  .philosophy p:last-child{margin-bottom:0;}
+  .philosophy em{color:var(--gold);font-style:italic;}
+
+  footer{padding:40px 0 56px;}
+  .sign{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .byline .name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--deep-teal);}
+  .byline .role{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+  .byline .co{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-top:10px;}
+  .disclaimer{font-size:11px;line-height:1.7;color:var(--muted);max-width:430px;}
+
+  @media (max-width:680px){
+    .fact-grid{grid-template-columns:repeat(2,1fr);}
+    .cols{grid-template-columns:1fr;gap:20px;}
+    .insight{grid-template-columns:1fr;}
+    .doc-title{font-size:36px;}
+    .reco .figure{font-size:50px;}
+    thead th.hide,tbody td.hide{display:none;}
+  }
+  @media print{
+    body{background:#fff;font-size:12px;}
+    .masthead{background:var(--deep-teal)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .philosophy,.reco,.factbar,.stat,tbody tr.subject td{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    section{padding:26px 0;}
+  }
+</style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="wrap">
+      <div class="brand-row">
+        <div class="brand"><span class="v">V</span>ERANDAH PROPERTIES</div>
+        <div class="tagline">Curating Lake Nona's Finest Rental Portfolio</div>
+      </div>
+      <h1 class="doc-title">Rental Market Analysis</h1>
+      <div class="doc-sub">9240 Yonath Street &middot; Laureate Park at Lake Nona &middot; Orlando, FL 32827</div>
+      <div class="doc-meta">
+        <div><b>Prepared</b>June 24, 2026</div>
+        <div><b>Prepared by</b>Pamela Syvertson, Owner &amp; Broker</div>
+        <div><b>Basis</b>Closed Comps &middot; Show-Ready</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section>
+      <div class="eyebrow">The Investment Property</div>
+      <h2>A David Weekley &ldquo;Reef&rdquo; in the heart of Laureate Park</h2>
+      <p class="lead">A two-story, builder-finished residence on the most sought-after side of Lake Nona — one of the community's most recognized floor plans, and a strong draw for the relocating-professional and Medical&nbsp;City tenant pool.</p>
+
+      <div class="factbar">
+        <div class="fact-grid">
+          <div class="fact"><div class="k">Bedrooms</div><div class="val">4</div></div>
+          <div class="fact"><div class="k">Bathrooms</div><div class="val">3.5</div></div>
+          <div class="fact"><div class="k">Living Area</div><div class="val">2,924<small> sq ft</small></div></div>
+          <div class="fact"><div class="k">Year Built</div><div class="val">2017</div></div>
+          <div class="fact"><div class="k">Stories</div><div class="val">2</div></div>
+          <div class="fact"><div class="k">Construction</div><div class="val" style="font-size:18px;">CB / Stucco</div></div>
+          <div class="fact"><div class="k">Gross Area</div><div class="val">3,793<small> sq ft</small></div></div>
+          <div class="fact"><div class="k">Furnishing</div><div class="val" style="font-size:18px;">Unfurnished</div></div>
+        </div>
+        <div class="model-line">
+          <b>Builder &amp; model:</b> David Weekley Homes — <b>The Reef</b> (Village Series)<span class="badge">No Garage Apartment</span><br>
+          Main-floor owner's suite with super shower &middot; dedicated study &middot; open-concept kitchen &amp; family room &middot; upstairs loft/retreat &middot; covered porch &amp; lanai &middot; rear alley-load garage. The 869 sq ft gap between gross and living area is garage and covered outdoor space — there is no accessory dwelling unit on the parcel.
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="eyebrow">Recommended Positioning</div>
+      <h2>Target monthly rent</h2>
+      <div class="reco">
+        <div class="label">Launch Rate</div>
+        <div class="figure"><span>$</span>3,995<small>/mo</small></div>
+        <div class="band">Expected lease range &nbsp;<b>$3,850 &ndash; $4,100</b>&nbsp; &middot; &nbsp;hold floor <b>$3,800</b></div>
+        <div class="basis">Anchored to <b>closed Laureate Park leases</b>, normalized for bedroom count and delivered at <b>Verandah show-ready standard</b>. A stretch toward $4,100 is supported if the walkthrough confirms a 3-car garage and premium outdoor living.</div>
+      </div>
+      <p style="margin-top:24px;">The number is built from leases that <em>actually closed</em>, not asking prices. The single closest comparable — a near-identical 4-bedroom of 2,869 sq ft built in 2018 — leased on <strong>June&nbsp;24, 2026</strong> for <strong>$3,840 in just six days</strong>. Against that baseline, this property earns a modest premium for its half-bath, slightly larger footprint, recognized Reef plan, and show-ready presentation — placing it just below $4,000 at launch.</p>
+    </section>
+
+    <section>
+      <div class="eyebrow">What the Market Is Telling Us</div>
+      <h2>Price it right and it leases in a week</h2>
+      <div class="insight">
+        <div class="stat"><div class="big">$3,870</div><div class="cap">Median closed rent<br>(4&ndash;5 bd, ~2,850 sq ft)</div></div>
+        <div class="stat"><div class="big">98.9%</div><div class="cap">Avg lease-to-list ratio<br>— little negotiating room</div></div>
+        <div class="stat"><div class="big">6 days</div><div class="cap">To lease when priced<br>at market</div></div>
+      </div>
+      <p style="margin-top:22px;">Lease-to-list runs near 99%, so the launch price is essentially the lease price — there is no cushion to &ldquo;price high and negotiate down.&rdquo; The days-on-market split is stark: homes priced at market leased in <span class="dom-fast">5&ndash;6 days</span>, while every home reaching for the mid-$4,000s and up is <span class="dom-slow">still sitting</span> — one active 4-bedroom asking $4,800 has lingered <strong>85 days</strong>. Overpricing here doesn't earn more; it simply extends vacancy.</p>
+    </section>
+
+    <section>
+      <div class="eyebrow">Comparable Rentals &middot; Stellar MLS</div>
+      <h2>The evidence behind the number</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th class="num">Bd/Ba</th>
+            <th class="num hide">Sq Ft</th>
+            <th class="num hide">Built</th>
+            <th class="num">Rent</th>
+            <th class="num">DOM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="subject">
+            <td class="addr">9240 Yonath St <span class="note">Subject — Reef, this analysis</span></td>
+            <td class="num">4 / 3.5</td>
+            <td class="num hide">2,924</td>
+            <td class="num hide">2017</td>
+            <td class="num"><span class="lsd">$3,995</span></td>
+            <td class="num">&mdash;</td>
+          </tr>
+
+          <tr class="group-row"><td colspan="6">Leased &middot; closed comps (primary)</td></tr>
+          <tr>
+            <td class="addr">13184 Kocher Way <span class="note">Closest comp — leased 06/24/2026 at 97.5% of ask</span></td>
+            <td class="num">4 / 3</td>
+            <td class="num hide">2,869</td>
+            <td class="num hide">2018</td>
+            <td class="num"><span class="lsd">$3,840</span></td>
+            <td class="num"><span class="dom-fast">6</span></td>
+          </tr>
+          <tr>
+            <td class="addr">8131 Mistral Dr <span class="note">5 bd &rarr; adj. &minus;$150 to 4-bd; older (2013)</span></td>
+            <td class="num">5 / 4.5</td>
+            <td class="num hide">2,858</td>
+            <td class="num hide">2013</td>
+            <td class="num"><span class="lsd">$3,900</span><span class="note">~$3,750 adj.</span></td>
+            <td class="num"><span class="dom-fast">6</span></td>
+          </tr>
+          <tr>
+            <td class="addr">8345 Nemours Pkwy <span class="note">Leased at full ask, but slow — likely inferior position/condition</span></td>
+            <td class="num">4 / 4</td>
+            <td class="num hide">2,841</td>
+            <td class="num hide">2019</td>
+            <td class="num"><span class="lsd">$3,500</span></td>
+            <td class="num"><span class="dom-slow">92</span></td>
+          </tr>
+          <tr>
+            <td class="addr">13153 Lessing Ave <span class="note">Excluded outlier — $2.10/sq ft on 2,755 sq ft implies ADU / premium / furnished</span></td>
+            <td class="num">4 / 3.5</td>
+            <td class="num hide">2,755</td>
+            <td class="num hide">2019</td>
+            <td class="num"><span class="ask">$5,800</span></td>
+            <td class="num"><span class="dom-slow">58</span></td>
+          </tr>
+
+          <tr class="group-row"><td colspan="6">Active &middot; asking prices (secondary)</td></tr>
+          <tr>
+            <td class="addr">8631 Laureate Blvd <span class="note">Market-clearing ask — only 5 days on market</span></td>
+            <td class="num">4 / 3.5</td>
+            <td class="num hide">2,950</td>
+            <td class="num hide">2014</td>
+            <td class="num"><span class="ask">$3,950</span></td>
+            <td class="num"><span class="dom-fast">5</span></td>
+          </tr>
+          <tr>
+            <td class="addr">7038 Arnoldson St <span class="note">Overpriced ceiling — sitting unleased</span></td>
+            <td class="num">4 / 3</td>
+            <td class="num hide">2,909</td>
+            <td class="num hide">2020</td>
+            <td class="num"><span class="ask">$4,800</span></td>
+            <td class="num"><span class="dom-slow">85</span></td>
+          </tr>
+          <tr>
+            <td class="addr">8771 Betzig Aly <span class="note">5 bd &rarr; adj. &minus;$150; unproven premium ask</span></td>
+            <td class="num">5 / 3.5</td>
+            <td class="num hide">2,910</td>
+            <td class="num hide">2019</td>
+            <td class="num"><span class="ask">$5,500</span></td>
+            <td class="num"><span class="dom-slow">35</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="legend">Source: Stellar MLS, Laureate Park rentals as of 06/24/2026. Five-bedroom comps normalized &minus;$150/mo to the subject's 4-bedroom configuration, as square footage is held roughly constant. 13153 Lessing Ave excluded from the base conclusion as a high outlier inconsistent with a no-ADU home. DOM = cumulative days on market.</p>
+    </section>
+
+    <section>
+      <div class="eyebrow">Why It Leases Here</div>
+      <h2>Positioning rationale</h2>
+      <div class="cols">
+        <div class="col">
+          <h3>Working in the property's favor</h3>
+          <ul class="clean">
+            <li><strong>The plan sells itself.</strong> The Reef is one of Laureate Park's most recognized floor plans — relocating tenants often know it by name.</li>
+            <li><strong>Half-bath edge &amp; size.</strong> 3.5 baths and 2,924 sq ft both exceed the closest closed comp, supporting a premium over its $3,840.</li>
+            <li><strong>Peak leasing season.</strong> A late-June launch lands in Lake Nona's strongest relocation and school-timing window.</li>
+            <li><strong>Medical City demand.</strong> Proximity to UCF/VA hospitals, Nemours, KPMG, and the Town Center keeps qualified-tenant velocity high.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>Confirm at walkthrough</h3>
+          <ul class="clean">
+            <li><strong>Garage configuration</strong> — a 3-car (vs 2-car) supports the top of the range.</li>
+            <li><strong>Outdoor living</strong> — screened lanai, pool, or premium hardscape would lift positioning toward $4,100.</li>
+            <li><strong>Finish level</strong> — quartz, 42" cabinetry, and flooring relative to show-ready standard.</li>
+            <li><strong>What's included</strong> — lawn care and the community 1&nbsp;Gig fiber shift the net comparison and the marketing hook.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section style="border-bottom:none;">
+      <div class="philosophy">
+        <div class="eyebrow">The Verandah View</div>
+        <h2>The right benchmark is the cost of vacancy</h2>
+        <p>Pricing is never about chasing the highest possible number — it is about the shortest path to the right tenant at a strong rate. The closed data here is unambiguous: well-priced Laureate Park homes lease in under a week, while every home reaching for a premium it can't support sits for months. One vacant month erases far more than the difference an over-ask ever recovers.</p>
+        <p>Condition is the lever. A property presented to show-ready standard photographs better, shows better, and earns the upper edge of its range — which is exactly where this analysis places <em>9240 Yonath Street</em>: priced to lease quickly, to a qualified tenant, at a number the market has already proven it will pay.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="sign">
+        <div class="byline">
+          <div class="name">Pamela Syvertson</div>
+          <div class="role">Owner &amp; Broker</div>
+          <div class="co">Verandah Properties LLC</div>
+        </div>
+        <div class="disclaimer">
+          This analysis is an informed market opinion prepared for planning purposes and is not an appraisal or a guarantee of rental income. It is grounded in closed Stellar MLS leases within Laureate Park and assumes the property is delivered in show-ready condition. Market conditions as of June 24, 2026 are subject to change. Final marketing price is confirmed following property walkthrough and owner approval.
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>
